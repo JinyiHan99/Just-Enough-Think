@@ -1,6 +1,6 @@
 data:
-  train_files: /mnt/data/kw/hjy/data/mix_math_dapo_gpqa_main.json
-  val_files: /mnt/data/kw/hjy/Effcient_Reasoning/fast_slow_test_data/math500_test_cleaned.jsonl
+  train_files: training/training_cleaned.json
+  val_files: /mnt/data/kw/hjy/public_github/Long_to_short/data/training/math_val.jsonl
   prompt_key: question
   answer_key: std
   image_key: images
