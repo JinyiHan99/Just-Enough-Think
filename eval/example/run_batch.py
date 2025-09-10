@@ -4,7 +4,10 @@ task_name = [
     'gpqa_diamond_instruct',
     'aime24_avg',
     'commonsenseqa',
-    'gsm8k'
+    'gsm8k',
+    'AMC_avg',
+    'Olympiad',
+    'mmlu_pro'
 ]
 
 for i in task_name:
