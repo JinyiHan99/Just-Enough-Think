@@ -599,38 +599,38 @@ class RayPPOTrainer:
                 self._balance_batch(batch, metrics=metrics)
 
                 ## save the data
-                print("Start to save the training data")
-                training_inputs = []
-                response_ids = batch.batch["responses"]
-                response_length = torch.sum(batch.batch["response_mask"], dim=-1)
-                batch_size = response_ids.shape[0]
-                print(f"[Debug]:{batch_size}")
-                for i in range(batch_size):
-                    cur_response_length = int(response_length[i].item())  # avoid tensor indexing error
-                    valid_response_ids = response_ids[i][:cur_response_length]
-                    response_str = self.tokenizer.decode(
-                        valid_response_ids,
-                        skip_special_tokens=True
-                    )
-                    training_inputs.append(
-                        {
-                            # "question_uid": batch.non_tensor_batch['uuid'][i],
-                            "question": batch.non_tensor_batch['question'][i],
-                            "ground_truth": batch.non_tensor_batch["ground_truth"][i],
-                            "response": response_str,
-                            "response_length": cur_response_length,
-                        }
-                    )
-                if "1.5B" in self.config.worker.actor.model.model_path:
-                    save_path = "/mnt/data/kw/hjy/data/easyR1_trainingData/training_inputs_1.5B.jsonl"
-                else:
-                    save_path = "/mnt/data/kw/hjy/data/easyR1_trainingData/training_inputs.jsonl"
-                os.makedirs(os.path.dirname(save_path), exist_ok=True)
-                print(f"[Debug] The length of saving data: {len(training_inputs)}")
-                with open(save_path, "a", encoding="utf-8") as f:
-                    for record in training_inputs:
-                        f.write(json.dumps(record, ensure_ascii=False) + "\n")
-                print("Save the training data finished")
+                # print("Start to save the training data")
+                # training_inputs = []
+                # response_ids = batch.batch["responses"]
+                # response_length = torch.sum(batch.batch["response_mask"], dim=-1)
+                # batch_size = response_ids.shape[0]
+                # print(f"[Debug]:{batch_size}")
+                # for i in range(batch_size):
+                #     cur_response_length = int(response_length[i].item())  # avoid tensor indexing error
+                #     valid_response_ids = response_ids[i][:cur_response_length]
+                #     response_str = self.tokenizer.decode(
+                #         valid_response_ids,
+                #         skip_special_tokens=True
+                #     )
+                #     training_inputs.append(
+                #         {
+                #             # "question_uid": batch.non_tensor_batch['uuid'][i],
+                #             "question": batch.non_tensor_batch['question'][i],
+                #             "ground_truth": batch.non_tensor_batch["ground_truth"][i],
+                #             "response": response_str,
+                #             "response_length": cur_response_length,
+                #         }
+                #     )
+                # if "1.5B" in self.config.worker.actor.model.model_path:
+                #     save_path = "/mnt/data/kw/hjy/data/easyR1_trainingData/training_inputs_1.5B.jsonl"
+                # else:
+                #     save_path = "/mnt/data/kw/hjy/data/easyR1_trainingData/training_inputs.jsonl"
+                # os.makedirs(os.path.dirname(save_path), exist_ok=True)
+                # print(f"[Debug] The length of saving data: {len(training_inputs)}")
+                # with open(save_path, "a", encoding="utf-8") as f:
+                #     for record in training_inputs:
+                #         f.write(json.dumps(record, ensure_ascii=False) + "\n")
+                # print("Save the training data finished")
       
 
                 # compute global valid tokens

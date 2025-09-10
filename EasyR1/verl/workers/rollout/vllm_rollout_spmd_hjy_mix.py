@@ -205,7 +205,7 @@ class vLLMRollout(BaseRollout):
 
         # 每个Q先生成 n // 4 个完整答案
         n_total = self.sampling_params.n
-        n_first = n_total // 2
+        n_first = n_total // 4
         # meta_info = dict(prompts.meta_info)
         # meta_info["n"] = n_first
         with self.update_sampling_params(n=n_first):
@@ -214,7 +214,7 @@ class vLLMRollout(BaseRollout):
             )
         full_answers_per_q = [[output.text for output in c.outputs] for c in completions]
 
-        ratios = [0.5]
+        ratios = [0.25, 0.5, 0.75]
         add_info = "\n\nWait, I have enough information to get the final answer.</think>\n\nTherefore, the final answer is \\boxed{"
 
         # 准备批量输入

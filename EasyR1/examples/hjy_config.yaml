@@ -1,5 +1,5 @@
 data:
-  train_files: /mnt/data/kw/hjy/public_github/Long_to_short/data/training/mix_math_cleaned.json
+  train_files: /mnt/data/kw/hjy/public_github/Long_to_short/data/training/training_cleaned.json
   val_files: /mnt/data/kw/hjy/public_github/Long_to_short/data/training/math_val.jsonl
   prompt_key: question
   answer_key: std
@@ -93,9 +93,9 @@ trainer:
   val_before_train: false
   val_only: false
   val_generations_to_log: 500
-  save_freq: 20  # -1 to disable
+  save_freq: 10  # -1 to disable
   save_limit: -1  # -1 to disable
   save_model_only: false
-  save_checkpoint_path: /mnt/data/kw/hjy/ckp/0909_truncated_1_5B_linear_reward
+  save_checkpoint_path: /mnt/data/kw/hjy/ckp/0909_truncated_1_5B_50_position
   load_checkpoint_path: null
   find_last_checkpoint: true

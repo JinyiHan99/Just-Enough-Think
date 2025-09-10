@@ -1,0 +1,5 @@
+1. 推理：run_batch.py
+2. 将推理结果移动到合适的路径；move.sh
+3. 将.parquet转化成.jsonl:convert.py / convert_batch.py，再把./step_{j}/community|math_500|0.parquet的路径复制到post_process_data.py / post_process_data_batch.py 转换成 _with_std.jsonl 的形式
+4.1 如果是ckp(step的形式)，直接运行summary_all_metrics.py
+4.2 如果是base model，评估文件：eval_lighteval_math.py（测math500）, eval_csqa_gpqa.py（测CSQA/GPQA），其余数据集的acc在output-dir的/results/mnt/*.jsonl ，token长度的测评在token_len_2.py
