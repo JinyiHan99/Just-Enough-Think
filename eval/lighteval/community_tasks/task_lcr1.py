@@ -42,6 +42,17 @@ LETTER_INDICES = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M
 #         specific={"std": line["std"]} 
 #     )
 
+math_metrics = CorpusLevelMetricGrouping(
+    metric_name=["accuracy"],
+    higher_is_better={"accuracy": True},
+    category=SamplingMethod.GENERATIVE,
+    sample_level_fn=JudgeLLMYourBench(),
+    corpus_level_fn={"accuracy": np.mean},
+)
+extend_enum(Metrics, "yourbench_metrics", yourbench_metrics)
+
+
+
 def prompt_normal(line, task_name: str = None):
     system_prompt = "You are a helpful AI assistant. A conversation takes place between the User and the Assistant. The User asks a question, and the Assistant solves it."
     policy_prompt = "Please help me solve this question. Wrap only the final answer in \\boxed{}."

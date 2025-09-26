@@ -1,38 +1,26 @@
 <h1 align="center">Your Models Have Thought Enough: Training Large Reasoning Models to Stop Overthinking</h1>
 
-
 <div align="center"> 
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv-b5212f.svg?logo=arxiv)]()
-[![HuggingFace](https://img.shields.io/badge/Data&Model-HuggingFace-ffd21e.svg?logo=huggingface)](https://huggingface.co/arm-team) 
+[![Paper](https://img.shields.io/badge/Paper-arXiv-b5212f.svg?logo=arxiv)](pics/JET.pdf)
+[![HuggingFace](https://img.shields.io/badge/Data&Model-HuggingFace-ffd21e.svg?logo=huggingface)]() 
 
 </div>
 
+# Introduce
+JET is a RL method that trains models to **proactively terminate unnecessary thinking**. JET operates through two key components. 
 
-
-
+- it additionally performs trajectory truncation during RL rollout, exposing the model to reasoning paths of varying lengths while keeping them aligned with the model’s natural generation. 
+- introduce a quality-controlled length reward to better guide the model toward efficiency. This reward identifies the shortest correct trajectory in each reasoning group as a baseline and assigns length penalties to longer correct trajectories. 
+ 
+<div align=center>
+<img src="./pics/rollout_show.jpg" width="120px">
+<p><em>Figure 1. (Left:) An example of a truncated reasoning trajectory; (Right:) The process of Two-stage Rollout Construction.</em></p>
+</div>
 # Requirements
-This repository is based on VeRL and lighteval. We use two separate conda environments.
  
 ```bash
-# JET Training 
-conda env create -f environment/verl_env.yaml
-conda activate verl_env
-
-# Eval
-conda env create -f environment/lighteval_env.yaml
-conda activate lighteval_env
-````
-
-# Data
-Training data: data/training/training_cleaned.json
-
-Test data path: data/test
-
-# QuickStart
-
-```bash
-# step1: JET Training 
+step1: Training
 conda activate verl_env
 cd examples
 bash run.sh
@@ -40,11 +28,28 @@ bash run.sh
 # step2: Merge the checkpoint
 conda activate verl_env
 python scripts/model_merger.py --local_dir your_ckp_path/global_step_70/actor
-
-# step3: Eval
-conda activate lighteval_env
-
 ````
 
-<!-- # Models
-We will release our models from [🤗HuggingFace](https://huggingface.co/). -->
+# QuickStart
+
+```bash
+conda activate verl_env
+cd examples
+bash run.sh
+````
+
+# Datasets
+We provide training and test datasets for JET.
+- Training data: data/training/training_cleaned.json
+- Test data path: data/test
+
+# Main Results
+<div align=center>
+<img src="./pics/main_results.jpg" width="120px">
+</div>
+
+# Acknowledgement
+We thank the [VeRL](https://github.com/volcengine/verl) for providing the awaresome open-source RL infrastructure.
+
+# Models
+We will release our models soon [🤗HuggingFace](https://huggingface.co/).
