@@ -16,25 +16,26 @@ JET is a RL method that trains models to **proactively terminate unnecessary thi
 <div align=center>
 <img src="./pics/rollout_show.jpg" width="680px">
 </div>
+
 # Requirements
  
 ```bash
-#step1: Training
+#create the running environment
+conda env create -f environment/verl_env.yaml
 conda activate verl_env
-cd examples
-bash run.sh
-
-# step2: Merge the checkpoint
-conda activate verl_env
-python scripts/model_merger.py --local_dir your_ckp_path/global_step_70/actor
 ````
 
 # QuickStart
 
 ```bash
+# step1: Training
 conda activate verl_env
-cd examples
+cd EasyR1/examples
 bash run.sh
+
+# step2: Merge the checkpoint
+conda activate verl_env
+python scripts/model_merger.py --local_dir your_ckp_path/global_step_70/actor
 ````
 
 # Datasets
