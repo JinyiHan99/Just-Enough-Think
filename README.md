@@ -15,7 +15,6 @@ JET is a RL method that trains models to **proactively terminate unnecessary thi
  
 <div align=center>
 <img src="./pics/rollout_show.jpg" width="680px">
-<p><em>Figure 1. (Left:) An example of a truncated reasoning trajectory; (Right:) The process of Two-stage Rollout Construction.</em></p>
 </div>
 # Requirements
  
