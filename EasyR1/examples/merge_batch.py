@@ -1,11 +1,11 @@
 import subprocess
 
-for i in range(110, 171, 10):
-    command = f"python /mnt/data/kw/hjy/EasyR1/scripts/model_merger.py \
-        --local_dir /mnt/data/kw/hjy/ckp/0907_1.5B_main/global_step_{i}/actor"
+# Merge batch
+for i in range(10, 21, 10):
+    command = f"python EasyR1/scripts/model_merger.py \
+        --local_dir ckp/7B/global_step_{i}/actor"
     print(f"Running: {command}")
     completed_process = subprocess.run(command, shell=True)
-        # 检查执行情况
     if completed_process.returncode != 0:
         print(f"Script failed with params!!!")
     else:

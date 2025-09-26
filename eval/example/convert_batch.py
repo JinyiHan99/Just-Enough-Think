@@ -6,12 +6,7 @@ import json
 # --- 结束配置 ---
 
 def convert_parquet_to_jsonl(input_dir, output_dir):
-    """
-    查找指定目录中的所有 .parquet 文件，并将它们转换为 .jsonl 格式。
-    """
     print(f"开始扫描目录: {input_dir}")
-    
-    # 确保输出目录存在
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
         print(f"已创建输出目录: {output_dir}")

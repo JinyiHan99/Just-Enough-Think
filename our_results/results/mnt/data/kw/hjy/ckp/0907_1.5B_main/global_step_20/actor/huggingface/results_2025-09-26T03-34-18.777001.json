@@ -1,0 +1,138 @@
+{
+  "config_general": {
+    "lighteval_sha": "ee31223d43247a79fe974fd3cb70e8769d886828",
+    "num_fewshot_seeds": 1,
+    "max_samples": null,
+    "job_id": "0",
+    "start_time": 7235796.073859219,
+    "end_time": 7235853.092107809,
+    "total_evaluation_time_secondes": "57.0182485897094",
+    "model_config": {
+      "generation_parameters": {
+        "num_blocks": null,
+        "block_size": null,
+        "early_stopping": null,
+        "repetition_penalty": null,
+        "frequency_penalty": null,
+        "length_penalty": null,
+        "presence_penalty": null,
+        "max_new_tokens": 16000,
+        "min_new_tokens": null,
+        "seed": null,
+        "stop_tokens": null,
+        "temperature": 0.6,
+        "top_k": null,
+        "min_p": null,
+        "top_p": 0.95,
+        "truncate_prompt": null,
+        "cache_implementation": null,
+        "response_format": null
+      },
+      "system_prompt": null,
+      "cache_dir": "~/.cache/huggingface/lighteval",
+      "model_name": "/mnt/data/kw/hjy/ckp/0907_1.5B_main/global_step_20/actor/huggingface",
+      "revision": "main",
+      "dtype": "bfloat16",
+      "tensor_parallel_size": 1,
+      "data_parallel_size": 1,
+      "pipeline_parallel_size": 1,
+      "gpu_memory_utilization": 0.9,
+      "max_model_length": 20000,
+      "quantization": null,
+      "load_format": null,
+      "swap_space": 4,
+      "seed": 1234,
+      "trust_remote_code": false,
+      "add_special_tokens": true,
+      "multichoice_continuations_start_space": true,
+      "pairwise_tokenization": false,
+      "max_num_seqs": 128,
+      "max_num_batched_tokens": 2048,
+      "subfolder": null,
+      "is_async": false,
+      "override_chat_template": null
+    },
+    "model_name": "/mnt/data/kw/hjy/ckp/0907_1.5B_main/global_step_20/actor/huggingface"
+  },
+  "results": {
+    "community|math_500|0": {
+      "pass@k_with_k&n": 0.702,
+      "pass@k_with_k&n_stderr": 0.020475118092988954
+    },
+    "all": {
+      "pass@k_with_k&n": 0.702,
+      "pass@k_with_k&n_stderr": 0.020475118092988954
+    }
+  },
+  "versions": {},
+  "config_tasks": {
+    "community|math_500|0": {
+      "name": "math_500",
+      "prompt_function": "prompt_normal",
+      "hf_repo": "./data/test/math500_dataset",
+      "hf_subset": "default",
+      "metrics": [
+        {
+          "metric_name": "pass@k_with_k&n",
+          "higher_is_better": true,
+          "category": "GENERATIVE",
+          "sample_level_fn": "<lighteval.metrics.metrics_sample.PassAtK object at 0x7fb971f39f00>",
+          "corpus_level_fn": "mean",
+          "batched_compute": false
+        }
+      ],
+      "hf_revision": null,
+      "hf_filter": null,
+      "hf_avail_splits": [
+        "test"
+      ],
+      "evaluation_splits": [
+        "test"
+      ],
+      "few_shots_split": null,
+      "few_shots_select": null,
+      "generation_size": null,
+      "generation_grammar": null,
+      "stop_sequence": [],
+      "num_samples": null,
+      "suite": [
+        "community"
+      ],
+      "original_num_docs": -1,
+      "effective_num_docs": -1,
+      "must_remove_duplicate_docs": false,
+      "num_fewshots": 0,
+      "truncate_fewshots": false,
+      "version": 2
+    }
+  },
+  "summary_tasks": {
+    "community|math_500|0": {
+      "hashes": {
+        "hash_examples": "eac05bd67b8179c3",
+        "hash_full_prompts": "ef46db3751d8e999",
+        "hash_input_tokens": "05fe363b10dda48b",
+        "hash_cont_tokens": "5b655c7422239fa7"
+      },
+      "truncated": 0,
+      "non_truncated": 0,
+      "padded": 0,
+      "non_padded": 0,
+      "effective_few_shots": 0,
+      "num_truncated_few_shots": 0
+    }
+  },
+  "summary_general": {
+    "hashes": {
+      "hash_examples": "d6b3f24200421bb2",
+      "hash_full_prompts": "c166e5d20ad58f4e",
+      "hash_input_tokens": "8be8cf75d2fac6a1",
+      "hash_cont_tokens": "cc4439cee6523032"
+    },
+    "truncated": 0,
+    "non_truncated": 0,
+    "padded": 0,
+    "non_padded": 0,
+    "num_truncated_few_shots": 0
+  }
+}

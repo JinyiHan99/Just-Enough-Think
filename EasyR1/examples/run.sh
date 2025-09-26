@@ -1,12 +1,18 @@
 #!/bin/bash
-cd /mnt/data/kw/hjy/EasyR1
 set -x
-export CUDA_VISIBLE_DEVICES=1,4,5,7
+export CUDA_VISIBLE_DEVICES=1,2,3,4
 export PYTHONUNBUFFERED=1
 
-MODEL_PATH=/mnt/data/kw/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B  # replace it with your local file path
+MODEL_PATH=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B  # replace it with your local file path
 
-screen -L -Logfile /mnt/data/kw/hjy/logs/0907/1.5B_position.log python3 -m verl.trainer.main \
-    config=/mnt/data/kw/hjy/public_github/Long_to_short/EasyR1/examples/hjy_config.yaml \
+python3 -m verl.trainer.main \
+    config=config.yaml \
+    trainer.max_steps=150 \
+    data.shuffle=false \
     worker.actor.model.model_path=${MODEL_PATH} \
-    worker.reward.reward_function=/mnt/data/kw/hjy/EasyR1/examples/reward_function/math.py:compute_score
+    trainer.experiment_name=JET \
+    trainer.save_freq=10 \
+    trainer.val_freq=10 \
+    trainer.n_gpus_per_node=4 \
+    trainer.save_checkpoint_path=../ckp/JET_ckp \
+    worker.reward.reward_function=./reward_function/math.py:compute_score

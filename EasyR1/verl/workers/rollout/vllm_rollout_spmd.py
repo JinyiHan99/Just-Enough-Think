@@ -205,7 +205,7 @@ class vLLMRollout(BaseRollout):
 
         # 每个Q先生成 n // 4 个完整答案
         n_total = self.sampling_params.n
-        n_first = n_total // 2
+        n_first = n_total // 6
         # meta_info = dict(prompts.meta_info)
         # meta_info["n"] = n_first
         with self.update_sampling_params(n=n_first):
@@ -214,10 +214,10 @@ class vLLMRollout(BaseRollout):
             )
         full_answers_per_q = [[output.text for output in c.outputs] for c in completions]
 
-        ratios = [0.5]
+        # ratios = [0.25, 0.5, 0.75]
+        ratios = [0.1, 0.3, 0.5, 0.7, 0.9]
         add_info = "\n\nWait, I have enough information to get the final answer.</think>\n\nTherefore, the final answer is \\boxed{"
 
-        # 准备批量输入
         all_prefix_inputs = []
         prefix_map = []
 
@@ -229,10 +229,6 @@ class vLLMRollout(BaseRollout):
                     all_prefix_inputs.append({"prompt_token_ids": full_input_ids})
                     prefix_map.append((q_idx, ans_idx, prefix))
 
-        # 批量生成
-        # meta_info = dict(prompts.meta_info)
-        # meta_info["n"] = 1
-        # meta_info['max_tokens'] = 50
         with self.update_sampling_params(n=1, max_tokens=50):
             all_conts = self.inference_engine.generate(prompts=all_prefix_inputs, sampling_params=self.sampling_params)
 
