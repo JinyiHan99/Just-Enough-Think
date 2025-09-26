@@ -14,13 +14,13 @@ JET is a RL method that trains models to **proactively terminate unnecessary thi
 - introduce a quality-controlled length reward to better guide the model toward efficiency. This reward identifies the shortest correct trajectory in each reasoning group as a baseline and assigns length penalties to longer correct trajectories. 
  
 <div align=center>
-<img src="./pics/rollout_show.jpg" width="120px">
+<img src="./pics/rollout_show.jpg" width="680px">
 <p><em>Figure 1. (Left:) An example of a truncated reasoning trajectory; (Right:) The process of Two-stage Rollout Construction.</em></p>
 </div>
 # Requirements
  
 ```bash
-step1: Training
+#step1: Training
 conda activate verl_env
 cd examples
 bash run.sh
@@ -45,7 +45,7 @@ We provide training and test datasets for JET.
 
 # Main Results
 <div align=center>
-<img src="./pics/main_results.jpg" width="120px">
+<img src="./pics/main_results.jpg" width="680px">
 </div>
 
 # Acknowledgement
