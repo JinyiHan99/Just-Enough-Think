@@ -18,11 +18,19 @@ JET is a RL method that trains models to **proactively terminate unnecessary thi
 </div>
 
 # Requirements
+This repository contains the codebase based on [VeRL](https://github.com/volcengine/verl) and [Lighteval](https://github.com/huggingface/lighteval) .
+We use two separate conda environments for each stage:
  
 ```bash
 #create the running environment
+
+#JET training env
 conda env create -f environment/verl_env.yaml
 conda activate verl_env
+
+#eval env
+conda env create -f environment/lighteval_env.yaml
+conda activate lighteval_env
 ````
 
 # QuickStart
@@ -30,12 +38,18 @@ conda activate verl_env
 ```bash
 # step1: Training
 conda activate verl_env
-cd EasyR1/examples
+cd Just-Enough-Think/EasyR1/examples
 bash run.sh
 
 # step2: Merge the checkpoint
 conda activate verl_env
+cd Just-Enough-Think/EasyR1/
 python scripts/model_merger.py --local_dir your_ckp_path/global_step_70/actor
+
+#step3: eval
+conda activate lighteval_env
+cd Just-Enough-Think
+bash eval/eval.sh
 ````
 
 # Datasets

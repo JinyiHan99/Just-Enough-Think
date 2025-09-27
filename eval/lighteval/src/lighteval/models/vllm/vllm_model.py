@@ -108,7 +108,7 @@ class VLLMModelConfig(ModelConfig):
         swap_space (PositiveInt):
             CPU swap space size in GiB per GPU. Defaults to 4.
         seed (NonNegativeInt):
-            Random seed for reproducibility. Defaults to 1234.
+            Random seed for reproducibility. Defaults to 42.
         trust_remote_code (bool):
             Whether to trust remote code when loading models. Defaults to False.
         add_special_tokens (bool):
@@ -157,7 +157,7 @@ class VLLMModelConfig(ModelConfig):
     quantization: str | None = None
     load_format: str | None = None
     swap_space: PositiveInt = 4  # CPU swap space size (GiB) per GPU.
-    seed: NonNegativeInt = 1234
+    seed: NonNegativeInt = 42
     trust_remote_code: bool = False
     add_special_tokens: bool = True
     multichoice_continuations_start_space: bool = (
