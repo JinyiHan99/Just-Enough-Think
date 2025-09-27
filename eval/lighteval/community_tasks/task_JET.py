@@ -10,7 +10,7 @@ from lighteval.tasks.requests import Doc
 from lighteval.models.model_output import ModelResponse
 from lighteval.metrics.utils.metric_utils import SampleLevelMetric
 from lighteval.metrics.metrics_sample import AvgAtK
-
+from lighteval.metrics.metrics import Metrics
 from lighteval.metrics.utils.metric_utils import SamplingMethod
 from lighteval.metrics.utils.metric_utils import SampleLevelMetric, SampleLevelComputation
 
@@ -180,7 +180,19 @@ def custom_avg_at_k_multi_choice(**kwargs) -> SampleLevelMetric:
         corpus_level_fn=np.mean, 
     )
 
-
+def custom_avg_at_k_math(**kwargs) -> SampleLevelMetric:
+    params = kwargs.get("sample_params", {})
+    scorer = AvgAtK(
+        sample_scoring_function=MyMathVerifyScorer(),
+        **params 
+    )
+    return SampleLevelMetric(
+        metric_name="custom_avg_at_k_math",
+        higher_is_better=True,
+        category=SamplingMethod.GENERATIVE,
+        sample_level_fn=scorer,
+        corpus_level_fn=np.mean,
+    )
 
 my_custom_metric_math = SampleLevelMetric(
     metric_name="custom_math_verify",
@@ -221,9 +233,9 @@ Olympiad_task = LightevalTaskConfig(
     few_shots_select=None,
     generation_size=None,
     metrics=[
-        my_custom_metric_math(
+        custom_avg_at_k_math(
             sample_params={
-                "k": 10,  
+                "k": 1,  
             }
         ),
         avg_output_token_length_metric
@@ -261,11 +273,7 @@ aime24_samples_task = LightevalTaskConfig(
     few_shots_select=None,
     suite=["community"],
     metrics=[
-        my_custom_metric_math(
-            sample_params={
-                "k": 10,  
-            }
-        ),
+        Metrics.avg_at_k_math(sample_params={"k": 10}),
         avg_output_token_length_metric
     ],
     generation_size=10, 
@@ -322,7 +330,7 @@ AMC_avg_task = LightevalTaskConfig(
     few_shots_split=None,
     few_shots_select=None,
     metrics=[
-        my_custom_metric_math(
+        custom_avg_at_k_math(
             sample_params={
                 "k": 10,  
             }

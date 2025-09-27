@@ -1,6 +1,6 @@
 data:
-  train_files: /data/training/training_cleaned.json
-  val_files: /data/training/math_val.jsonl
+  train_files: ../../data/training/training_cleaned.json
+  val_files: ../../data/training/math_val.jsonl
   prompt_key: question
   answer_key: std
   image_key: images

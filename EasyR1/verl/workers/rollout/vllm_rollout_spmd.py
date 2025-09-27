@@ -232,7 +232,6 @@ class vLLMRollout(BaseRollout):
         with self.update_sampling_params(n=1, max_tokens=50):
             all_conts = self.inference_engine.generate(prompts=all_prefix_inputs, sampling_params=self.sampling_params)
 
-        # 拼接最终答案
         final_answers = []
         for q_idx, ans_list in enumerate(full_answers_per_q):
             combined_q = ans_list.copy()  # 
@@ -246,17 +245,13 @@ class vLLMRollout(BaseRollout):
         max_resp_len = int(self.config.response_length)
         response_token_lists = []
         for ans in final_answers:
-            # 不让 tokenizer 自动加 special tokens（我们手动控制 eos）
             toks = tokenizer(ans, add_special_tokens=False)["input_ids"]
-            # 截断到 max_resp_len-1，确保有位置放 eos
             if len(toks) >= max_resp_len:
                 toks = toks[: max_resp_len - 1]
-            # 如果末尾没有 eos，就加上
             if len(toks) == 0 or toks[-1] != eos_token_id:
                 toks = toks + [eos_token_id]
             response_token_lists.append(toks)
 
-        # pad/truncate 到统一长度（VF.pad_2d_list_to_length 应该支持长短不一的列表）
         response_ids = VF.pad_2d_list_to_length(
             response_token_lists, self.pad_token_id, max_length=max_resp_len
         ).to(input_ids.device)

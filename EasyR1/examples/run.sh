@@ -1,10 +1,11 @@
 #!/bin/bash
 set -x
-export CUDA_VISIBLE_DEVICES=1,2,3,4
+export CUDA_VISIBLE_DEVICES=4,5,6,7
 export PYTHONUNBUFFERED=1
 
-MODEL_PATH=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B  # replace it with your local file path
 
+
+MODEL_PATH=deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
 python3 -m verl.trainer.main \
     config=config.yaml \
     trainer.max_steps=150 \
