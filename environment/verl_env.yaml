@@ -1,4 +1,4 @@
-name: easyR1
+name: verl_env
 channels:
   - defaults
 dependencies:
