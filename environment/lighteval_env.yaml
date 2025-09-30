@@ -1,4 +1,4 @@
-name: tom
+name: lighteval_env
 channels:
   - defaults
 dependencies:
