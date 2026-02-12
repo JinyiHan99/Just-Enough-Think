@@ -2,9 +2,6 @@
   <h1>Your Models Have Thought Enough: Training Large Reasoning Models to Stop Overthinking</h1>
 
   <div style="margin: 20px 0;">
-    <a href="https://openreview.net/forum?id=your_paper_id" target="_blank">
-      <img src="https://img.shields.io/badge/ICLR-2026-%23FF4F5B.svg?style=flat-square&logo=iclr" alt="ICLR 2026">
-    </a>
     <a href="pics/JET.pdf" target="_blank">
       <img src="https://img.shields.io/badge/Paper-PDF-b5212f.svg?style=flat-square&logo=arxiv" alt="Paper">
     </a>
