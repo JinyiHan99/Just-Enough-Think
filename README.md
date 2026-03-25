@@ -17,6 +17,8 @@
 
 ## 📢 Latest News
 
+- **2026-03**: JET has won the **Huawei Spark Award**! 🏆
+- **2026-03**: OpenPangu-Embedded-7B was tested on NPU using JET method for mathematical reasoning tasks. Our approach reduced token length by **12%** while maintaining accuracy, even for simple problems. 
 - **2026-02**: Our paper "Your Models Have Thought Enough: Training Large Reasoning Models to Stop Overthinking" has been accepted by **ICLR 2026**! 🎉
 
 ## 📖 Background
