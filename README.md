@@ -90,6 +90,14 @@ We provide comprehensive training and testing datasets:
   <p style="margin-top: 10px; color: #666; font-size: 0.9em;">Performance Comparison on Reasoning Tasks</p>
 </div>
 
+### Performance on GSM8K8k (NPU Test)
+We also tested OpenPangu-Embedded-7B on NPU using the JET method for mathematical reasoning tasks. The results demonstrate significant token length reduction while maintaining high accuracy.
+
+| Models | ACC | Average Token Length |
+|------|--------|----------------|
+| **Base**| **94.77%** | 1662 |
+| **JET**| **94.69%** | 1462（-12%） |
+
 
 ## 🙏 Acknowledgement
 
